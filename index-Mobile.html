@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minigame do Yo!Noid</title>
+    <style>
+        body{
+            background-color: black;
+            overflow-x: hidden;
+            overflow-x: none;
+            position: fixed;
+            top: -5px;
+            left: -0px;
+        }
+        #dvJog{
+            width: 100%;
+            height: 250px;
+            border: 1px solid black;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: black;
+
+        }
+        #jogadorNums{
+            margin-top: 11px;
+            height: 190px;
+            width: 190px;
+            border: 1px solid black;
+            display: flex;
+            flex-wrap: wrap;
+            background-color: black;
+            margin-left: -110px;
+            
+        }
+        .numJog{
+            width: 25px;
+            height: 40px;
+            border-radius: 5px;
+            border: 1px solid black;
+            background-color: white;
+            margin-top: -1px;
+            margin-left: 5px;
+        }
+        .numJog img{
+            width: 25px;
+            height: 40px;
+        }
+        #ocultarJogFora{
+            position: fixed;
+            top: 5px;
+            left: 0px;
+            height: 602px;
+            width: 277px;
+            background-color: white;
+            z-index: 2;
+        }
+        #ocultarAdvFora{
+            position: fixed;
+            top: 5px;
+            right: 0px;
+            height: 602px;
+            width: 277px;
+            background-color: white;
+            z-index: 2; 
+        }
+        #advNums{
+            margin-top: 2px;
+            height: 190px;
+            width: 130px;
+            border: 1px solid black;
+            display: flex;
+            flex-wrap: wrap;
+            background-color: black;
+            margin-left: 286px;
+            margin-top: -192px;
+        }
+        #pizzaria{
+            position: absolute;
+            top: 3px;
+            left:54px;
+            z-index: 2;
+        }
+        #pizzaria img{
+            width: 240px;
+            height: 200px;
+        }
+       #jogplace{
+            position: absolute;
+            top: 205px;
+            left: -20px;
+            width: 190px;
+            height: 150px;
+        }
+        #jogplaceimg{
+            margin-left: 107px;
+        }
+        #JogpontosConteiner{
+            display: flex;
+            flex-wrap: wrap;
+            width: 40px;
+            height: 100px;
+            margin-top: -40px;
+            margin-left: 30px;
+        }
+        .pontos{
+            width: 12px;
+            height: 9px;
+            border-radius: 6px;
+            border: 1px solid white;
+            margin-left: 3.5px;
+        }
+        #cartaJog{
+            width: 30px;
+            height: 45px;
+            margin-top: -60px;
+            margin-left: 158px;
+        }
+        #cartaJog img{
+            width: 30px;
+            height: 45px; 
+        }
+        #advplace{
+            position: absolute;
+            top: 206px;
+            left: 180px;
+            width: 175px;
+            height: 150px;
+        }
+        #advPlaceimg{
+            margin-left: 45px;
+        }
+        #AdvpontosConteiner{
+            display: flex;
+            flex-wrap: wrap;
+            width: 70px;
+            height: 100px;
+            margin-left: 100px;
+            margin-top: -40px;
+        }
+        #cartaAdv{
+            width: 30px;
+            height: 45px;
+            margin-left: 0px;
+            margin-top: -60px;
+        }
+        #cartaAdv img{
+            width:30px;
+            height: 45px;
+        }
+        #textoVenc{
+            position: absolute;
+            width: 150px;
+            height: 60px;
+            top: 300px;
+            left: 101px;
+            font-size: 12pt;
+            text-align: center;
+            vertical-align: middle;
+            color: white;
+        }
+        #btnConteiner{
+            position: absolute;
+            top: 33px;
+            left: 123.5px;
+            z-index: 3;
+        }
+        img#btnStart:hover{
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div id="btnConteiner"><img src="https://wouztw.dm.files.1drv.com/y4mKaFIyO8SiBvs_zfUAq8VDbnQjNh8pXF5g3Lmb6HYVGhoFlt9MldfwolH2MsIEA__BJuGEabVW7XnJGXK8-AU4Q_tOrfjyRBSZWGZ2_nHnp_QYwkKd4b9akPSTBDhMQRcseMnx0cJFXQvk-ZlMIJPfnBJx8nFd9zJjIXFtMCNncDZ_FBQvQq_pgovX8OBQlJ3atFRyjaklstwa2hG_heTMw?width=100&height=46&cropmode=none" id="btnStart"></div>
+    <div id="dvJog">
+        <div id="jogadorNums">
+            <div class="numJog"></div>
+            <div class="numJog"></div>
+            <div class="numJog"></div>
+            <div class="numJog"></div>
+            <div class="numJog"></div>
+            <div class="numJog"></div>
+            <div class="numJog"></div>
+            <div class="numJog"></div>
+            <div class="numJog"></div>
+            <div class="numJog"></div>
+            <div class="numJog"></div>
+            <div class="numJog"></div>
+            <div class="numJog"></div>
+            <div class="numJog"></div>
+            <div class="numJog"></div>
+            <div class="numJog"></div>
+            <div class="numJog"></div>
+            <div class="numJog"></div>
+            <div class="numJog"></div>
+            <div class="numJog"></div>
+        </div>
+        <div id="pizzaria"><img src="https://wou0tw.dm.files.1drv.com/y4m3Pdw8rEnsK12IDIE5MlBRC7lEnHKNl8-jcpU0hw_QXDquY-7eHFn49fRsiXp7hbgVam4O2ediHflY4e4hPgDiaf-meRev2Ur7e8NjzXNic8aQmGWmu8Gf36pdfJzU1UOwfxO8Vf2I45zP1K4zOCy8uuyPtBSZJfZIGoSa9mQH9FNQDELSMcg4S1CBb77yqw8P4UOkHNrcbap5CzGP2gC9A?width=500&height=290&cropmode=none"></div>
+
+        <div id="jogplace">
+            <img src="https://teuztw.dm.files.1drv.com/y4mdRZqsZp-hF686MO8LeplFqfYmjTay8JMSZ-Zettm9cor6mjC1nxZSM7aKF0TFm5eXcQijyQxJ5xLAJDP4m4xC5wHDttBUGfWWm1CmiFbDX73QuSzoi2b5i8cN5tNyU7HxraURdSAdwOhS_vtoLhDacej9snDuGdXtgaDcjZ5Y1wdQjxv5FW1A-FPLvbV4ufT50RAAlYbt4x0ocR6e1oBYQ?width=42&height=85&cropmode=none" id="jogplaceimg">
+            <div id="cartaJog"></div>
+            <div id="JogpontosConteiner">
+                <div class="pontos"></div>
+                <div class="pontos"></div>
+                <div class="pontos"></div>
+                <div class="pontos"></div>
+                <div class="pontos"></div>
+                <div class="pontos"></div>
+                <div class="pontos"></div>
+                <div class="pontos"></div>
+                <div class="pontos"></div>
+                <div class="pontos"></div>
+            </div>
+        </div>
+        <div id="advplace">
+            <img src="https://tuuvtw.dm.files.1drv.com/y4m6owkjGlthMW70pWchiOkOEHYM3hBnH5zidhf_7Vo8dXpShUEoJc9N4trelGfXu4Tq7M5hX93ONt5Dld7JXp586y5EPAUlc3vVcOXzaqGdottcu4Ugk9YcfSKqocsdrY3ze5coXfq1Glv9ohVk47bcv648mO9uitnxBSTb_bpPjOqWxRQU-yEqrwVkHB2QmCaLFGfz9efOY6tQmnNN_NEsg?width=43&height=85&cropmode=none" id="advPlaceimg">
+            <div id="cartaAdv"></div>
+            <div id="AdvpontosConteiner">
+                <div class="pontos"></div>
+                <div class="pontos"></div>
+                <div class="pontos"></div>
+                <div class="pontos"></div>
+                <div class="pontos"></div>
+                <div class="pontos"></div>
+                <div class="pontos"></div>
+                <div class="pontos"></div>
+                <div class="pontos"></div>
+                <div class="pontos"></div>
+                <div class="pontos"></div>
+                <div class="pontos"></div>
+                <div class="pontos"></div>
+                <div class="pontos"></div>
+                <div class="pontos"></div>
+                <div class="pontos"></div>
+                <div class="pontos"></div>
+                <div class="pontos"></div>
+            </div>
+        </div>
+        <div id="advNums">
+            <div class="numJog"></div>
+            <div class="numJog"></div>
+            <div class="numJog"></div>
+            <div class="numJog"></div>
+            <div class="numJog"></div>
+            <div class="numJog"></div>
+            <div class="numJog"></div>
+            <div class="numJog"></div>
+            <div class="numJog"></div>
+            <div class="numJog"></div>
+            <div class="numJog"></div>
+            <div class="numJog"></div>
+            <div class="numJog"></div>
+            <div class="numJog"></div>
+            <div class="numJog"></div>
+            <div class="numJog"></div>
+        </div>
+    </div>
+    <div id="textoVenc"></div>
+</body>
+<script>
+var CartasJog, CartasAdv, ImgPizzaria; 
+var AllCards = document.getElementsByClassName("numJog")// todas as cartas, usado para inserir as imagens com os números
+var pxCartasJog, pxIMgP, pxCartasAdv; // posição X dos elementos que irao se deslocar
+var dirCartasJog, dirIMgPizzaria , dirCartasAdv, velDeslocamento;// direção dos elementos anteriores
+var adv, jog;// verifica de quem é vez de jogar
+//Img da mao que indica que o adversario esta jogando e seus derivados ->
+var MaoImg, pxMao, pyMao, remover, primeiraPassada = true;
+var sortearCarta, PxCartaSort, PyCartaSort, cartaselecionada;
+// até aqui <-
+var delay, intervalo, deslizarMao, intervaloCalculo;// intervalos e delays; -> mais para efeitos estéticos
+var deslizecentro = false // definir quando deslizar ao centro
+var Textinf = document.querySelector("#textoVenc");// texto informativo
+var MarcarAdvPontos, MarcarJogPontos;// Marca os pontos nas bolas criculares brancas
+var jogo = false
+//Calcula as jogadas, o vencedor e verifica se foi usado power-ups
+var numerodoAdv, numerodoJogador, substrair, multiplicador, pimenta;
+var jogadaJog, jogadaAdv;
+var srcsCartas = ["https://teu1tw.dm.files.1drv.com/y4mVUZLkvKVZUv2h2wE-8HPiKx23TMPVTozGyC_h960ciHIFcQjGtwUIiB5oZiCpyz-wF0P1EBTXkvyJjnCGmDzd-tk1repgjN-4YVh5RUsYEigvj5WhH1rhDt4lKi3mN7aJDNzZPzW5ji5PuIvhYZnQa8UOUQZVArbXtu7Y7b_IRQUn_icBdQfolgE2Ly50RskwvTtgwqrMeM-wqG58SVMkw?width=50&height=65&cropmode=none", "https://teuvtw.dm.files.1drv.com/y4mZEKADZeX10V7sAeTMKMjQikFEK00iiExTpCqSiH6XmQc6DzwXDgu2vz72oKZPGFvC5U4KB8q6aXX4o8XFTizJeogf8KI2U5GUFZ8qC_2KrnbUC01ShQ2cmO1Y_yliOzDq2r-GplxkWaM2m0cd0SAoOz24c14fb2lcPOiizeIIf19YmZSozVHjs98oANws2y3UIxQfL9FhHxITzerVfdMpw?width=50&height=65&cropmode=none", "https://teuytw.dm.files.1drv.com/y4mion7b9L45P5qMpABmUOk2BdTxMmCHutif1-qu2jsLrF1FXsC2p3YwcJTnwT_Gl4LLNnZWqNlkYrJ0XNSj78EeeREOooxxvXpzbJhN-Ie0sZ6y_k9l5DuBshXXzVrE0xdn5DsOgzGKMWVqCbJJtgHai1uLvcBi2wNV_hpo3niMMVkHjtyj9HwjBEvCGAFIAUNzaCxPmDPrHKFBUFI5Wesgw?width=50&height=65&cropmode=none", "https://teuxtw.dm.files.1drv.com/y4mL1xaEWmW1EWnGc_ejpjMUaYJnR3YouVq9aM2eEc_UdK37yulbA9K8tu5A8PYsaAnWK64UUZQrmQzgdVkttNJXZs569TiO6hKYIlGVyB6O-3I_ADd2-jxjKazgIjx4_ITdAmglzp4vsust5ZOwE5P4vTYohr9QNhR8l0k0kKQnJGB9KuIUTXCdbTjAEBoLfd90iyuY6FVrGWdWPNyvkFjiA?width=50&height=65&cropmode=none", "https://teustw.dm.files.1drv.com/y4mPUkdqPeSX9pkF8FfO-MAKeYiGmQu7GTZM2Yu3_okcuLxxqrn95KasYybL-ox8iZFsdCzGk0Oxn2uZafdRQc70gW44j4MJP-HO3AGeZ2yVQKpcYGxDgSh0CtMUWj0qP_y2wbYldIPG-n8GP1G1InoMXSYVpzovdaVlgvnBlTOJ1OYVAKtOBtGrCGoVi5dILps9hDccW8zkjBFPn2WclPG4Q?width=50&height=65&cropmode=none", "https://tuuytw.dm.files.1drv.com/y4mKYkZ7hqPamj4eo6Bz1avDFljA-dDTlo7HE7VvxecrmzuiGLz5GvS0jy2h19LIGMa5dRCF55iZqX4q7RvIAOY9fRmMSVscsy-1IYxCG6w_90qNtHRCkjFpn6bELKlVUw0WIwh3NMHDjPJAxeXWVp4T27DEHfUsI_sf040-collVEUS_QK8xOUgS_GGPyi5Vv3DvsRcqeVKKLCRS4R-Me-cw?width=50&height=65&cropmode=none"]
+
+/* 
+0 - num1.jpg
+1 - num2.jpg
+2 - num3.jpg
+3 - num4.jpg
+4 - num5.jpg
+5 - cartavirada.jpg
+
+*/
+var srcPlayer = ["https://tuuvtw.dm.files.1drv.com/y4m6owkjGlthMW70pWchiOkOEHYM3hBnH5zidhf_7Vo8dXpShUEoJc9N4trelGfXu4Tq7M5hX93ONt5Dld7JXp586y5EPAUlc3vVcOXzaqGdottcu4Ugk9YcfSKqocsdrY3ze5coXfq1Glv9ohVk47bcv648mO9uitnxBSTb_bpPjOqWxRQU-yEqrwVkHB2QmCaLFGfz9efOY6tQmnNN_NEsg?width=43&height=85&cropmode=none", "https://teuztw.dm.files.1drv.com/y4mdRZqsZp-hF686MO8LeplFqfYmjTay8JMSZ-Zettm9cor6mjC1nxZSM7aKF0TFm5eXcQijyQxJ5xLAJDP4m4xC5wHDttBUGfWWm1CmiFbDX73QuSzoi2b5i8cN5tNyU7HxraURdSAdwOhS_vtoLhDacej9snDuGdXtgaDcjZ5Y1wdQjxv5FW1A-FPLvbV4ufT50RAAlYbt4x0ocR6e1oBYQ?width=42&height=85&cropmode=none"]
+// 0 = adv 1 == jog
+
+
+window.addEventListener("load", estilizar)
+
+function estilizar(){
+    for (var c = 0; c < AllCards.length; c++){
+        var imgCartas = document.createElement("img")
+        var att1 = document.createAttribute("src")
+        att1.value = srcsCartas[5]
+        imgCartas.setAttributeNode(att1)
+        AllCards[c].appendChild(imgCartas)
+        var btn = document.querySelector("#btnStart")
+        btn.addEventListener("click", StartGame)
+    }
+}
+// chama a função para esconder o botão e começar a jogar
+function StartGame(){
+    // Daqui
+    var Pontos = document.getElementsByClassName("pontos")
+    for (var j = 0; j <=27; j++){
+        Pontos[j].style.backgroundColor = "black"
+    }
+    document.querySelector("#jogplaceimg").src = srcPlayer[1]
+    Textinf.innerHTML = ""
+    // até aqui, para quando reiniciar o jogo pelo botão
+    c = 1.05
+    intervalo = setInterval(btnfadeIn, 70)
+}
+function btnfadeIn(){
+    c -= 0.05
+    var btn = document.querySelector("#btnStart")
+    var att1 = document.createAttribute("style")
+    att1.value = "transform: scale(" + c + ");"
+    btn.setAttributeNode(att1)
+    if (c <= 0){
+        clearInterval(intervalo)
+        AtribuirValorVariavies()
+        btn.removeAttribute("style")
+        btn.src = ""
+    }
+}
+
+function AtribuirValorVariavies(){
+    CartasJog = document.querySelector("#jogadorNums")//cartas do jogador
+    CartasAdv = document.querySelector("div#advNums")// cartas do adversario
+    ImgPizzaria = document.querySelector("div#pizzaria")//imagem da pizzaria
+    velDeslocamento = 5
+    pxCartasJog = -110 // posição inicial do conteiner
+    pxIMgP = 54 // posiçao inicial
+    pxCartasAdv = 286;
+    MarcarAdvPontos = 26  
+    MarcarJogPontos = 8// relativo a classe, para marcar os pontos
+    multiplicador = 1
+    jogo = true
+    sortearNums()
+    ComeçarJogo()
+}
+// sorteia as cartas
+function sortearNums(){
+    var n = 4
+    var s;
+    var especiais = ["https://tuustw.dm.files.1drv.com/y4mt2noFnRSZ5BDNF_6oKv2zJVzZjgGGGoCc5rLqKf9VM2VFIneu01eRNRCKLYrw4kPWq4C4fxRvGajpecs5aDXuSBiPbs9KwOQBv_nX_IACztf2WyTAn75tOJs17LqkWL10nlyydBqCed00MCwDNLteF23Ffo-RztVMe-CZ7w9BvdBnL8ioZ16RNnkfRAziOZBPoqLma6tSPeTKbk2wYyb4g?width=50&height=65&cropmode=none", "https://wou2tw.dm.files.1drv.com/y4mucDejRo53FNrl11zcBEyGJSGmCM-rQPH7Iab6cO1wCZ953XN4iRKsyAvUB83Gf-O2tj0yhXH52knMW6NWyN45HQB1y8-DVIvTTFnctvPT2FnW03r2rL16XPgjTd44X4vGRBAMYgfpsZYf45d16hNPvZUq3INVm7QdQfO5QtmYEGiuq6N7-1jZHHpkYsij7_DLmyZrLM5YWyfwTNL547iDA?width=50&height=65&cropmode=none", "https://teurtw.dm.files.1drv.com/y4m4LLDnGstGMbwbcS1BRA5dWU8v6uyRqXRMoqTKg7ARr9WmxUXqKy9h7JuV7lgG3lUtPRU8iOSzViqqc5j-yiWfZqoZFAcxTKwS-uDHRGJgl-rPzCddgavOc_WSW9G6IVJWS3DaTt7smPgAYvWaiAiXtrl8H_iWqenM6layub-vFCi9c264QecK10ZqoMTvbQsKe0WLzyl8EIOdM6wUa-Mxw?width=50&height=65&cropmode=none"]
+    // 0 doble , 1 triple - 2 pimenta
+    var especiaisId = ["doble", "triple", "pimenta"]
+    for (var c = 0; c < AllCards.length; c++){
+        if (c <= 19){
+            var sorteiaNum = Math.round(Math.random()*2)
+            AllCards[c].childNodes[0].src = srcsCartas[sorteiaNum]
+            var idInfoNum = document.createAttribute("id")
+            idInfoNum.value = "num" + (sorteiaNum + 1)
+            AllCards[c].setAttributeNode(idInfoNum)
+
+        }else{
+            sorteiaNum = Math.round(Math.random()*n)
+            var idInfoNum2 = document.createAttribute("id")
+            AllCards[c].childNodes[0].src = srcsCartas[sorteiaNum]
+            idInfoNum2.value = "num" + (sorteiaNum + 1)
+            AllCards[c].setAttributeNode(idInfoNum2)
+            if (AllCards[c].getAttribute("id").match("5")){
+                n = 3
+            }
+        }
+    }
+    var s2;
+    for (c = 0; c < 2; c++){
+        if (c == 0){
+            s = Math.round(Math.random()*19)// sorteia uma div do jogador para receber power-ups
+            s2 = s
+        }else{
+            do{
+                s = Math.round(Math.random()*19)
+            }while(s2 == s)
+        }
+        var sort = Math.round(Math.random()*2)
+        var p = especiais[sort]
+        AllCards[s].childNodes[0].src = p
+        AllCards[s].id = especiaisId[sort]
+    }
+    Textinf.innerHTML = "Roxo pode começar!"
+}
+
+function ComeçarJogo(){
+    adv = true
+    jog = false
+    primeiraPassada = true
+    deslizarPainel()
+    delay = setInterval(desenharMao, 700)
+}
+
+// Verifica qual direção o painel acima da imgem dos jogagores deve se deslocar
+function deslizarPainel(){
+    if (adv || deslizecentro){
+        dirCartasAdv = dirCartasJog = dirIMgPizzaria = -1
+        intervalo = setInterval(deslizar, 20)
+    }else if(jog){
+        dirCartasAdv = dirCartasJog = dirIMgPizzaria = 1
+        intervalo = setInterval(deslizar, 20) 
+    }
+}
+// desloca o painel de acordo com as especificaçoes da funçao acima
+function deslizar(){
+    pxCartasAdv += velDeslocamento*dirCartasAdv
+    pxCartasJog += velDeslocamento*dirCartasJog
+    pxIMgP += velDeslocamento*dirIMgPizzaria
+    if (pxCartasAdv <= 215 && adv){
+        clearInterval(intervalo)
+    }
+    if (pxCartasJog >= -5 && jog && !deslizecentro){
+        clearInterval(intervalo)
+    }
+    if(pxCartasJog <= -110 && deslizecentro){
+        clearInterval(intervalo)
+        deslizecentro = false
+    }
+    CartasAdv.style.marginLeft = pxCartasAdv + "px"
+    CartasJog.style.marginLeft = pxCartasJog + "px"
+    ImgPizzaria.style.left = pxIMgP + "px"
+
+}
+
+function desenharMao(){
+    clearInterval(delay)
+    Textinf.innerHTML = ""
+    var ImgMao = document.createElement("img")// tamanho 26X23
+    var att1 = document.createAttribute("src")
+    var att2 = document.createAttribute("id")
+    var att3 = document.createAttribute("style")
+    att1.value = "https://teuwtw.dm.files.1drv.com/y4mph6rg2k3RrKJpbaT4e4TFnZxNY3oilD0moCBxS8sMDtyIgLfyuBWjSLEeo6csXcMbYmKz7KqbIzGaqOxjHNMcmiXArLYnj2CSWHPC62Q_tl9iSOQi6KUh-pTWiVqOyb_5wkGEHlp0UbGanZ4uuguxJISVCBA9HZJnNRoMXK7tanz46KNZ1f8cFJAameXsPTYmtzaCiHaEHBrN5874Dxvqg?width=26&height=23&cropmode=none"
+    att2.value = "maoImg"
+    pxMao = 233
+    pyMao = 32
+    att3.value = "position: absolute; left:" + pxMao + "px; top:" +  pyMao +"px;"
+    ImgMao.setAttributeNode(att1)
+    ImgMao.setAttributeNode(att2)
+    ImgMao.setAttributeNode(att3)
+    document.body.appendChild(ImgMao)
+    MaoImg = document.querySelector("img#maoImg")
+    do{
+        // 20 é a primeira // 35 a última // 16 casas -1 por ser vetor
+        sortearCarta = Math.round(Math.random()*15 + 20)
+        PxCartaSort = AllCards[sortearCarta].offsetLeft
+        PyCartaSort = AllCards[sortearCarta].offsetTop
+        cartaselecionada = AllCards[sortearCarta].childNodes[0].getAttribute("src")
+        var idParaVerificar = AllCards[sortearCarta].getAttribute("id")
+    }while(idParaVerificar == "cartavirada")
+    deslizarMao = setInterval(sortearAdvjogada, 200)
+}
+
+function sortearAdvjogada(){
+    //233, 263, 293, 323, 353  posiçoes da maozinha seletora no eixo X
+    // 35, 85, 135, 185, 235 eixo y
+    pxMao += 32
+    if (pxMao >= 353){
+        pxMao = 233
+        pyMao += 50
+    }
+    if (pyMao >= 185 && primeiraPassada){
+        pyMao = 32
+        primeiraPassada = false
+    }
+    if (!primeiraPassada){
+        if (((pxMao >= PxCartaSort) && (pxMao <= PxCartaSort + 25)) && ((pyMao >= PyCartaSort) && (pyMao <= PyCartaSort + 40))){
+            clearInterval(deslizarMao)
+            remover = setInterval(RemoverMao, 1000)
+        }
+    }
+    MaoImg.style.top = pyMao + "px"
+    MaoImg.style.left = pxMao + "px"
+    
+}
+// remove a maozinha depois dela escolhar a carta
+function RemoverMao(){
+    jogadaAdv = document.querySelector("#cartaAdv")
+    document.querySelector("#maoImg").remove()
+    clearInterval(remover)
+    var imgCartaJogada = document.createElement("img")
+    var att1 = document.createAttribute("src")
+    var att2 = document.createAttribute("id")
+    att1.value = cartaselecionada
+    att2.value = "imgCartaJogada"
+    imgCartaJogada.setAttributeNode(att1)
+    imgCartaJogada.setAttributeNode(att2)
+    jogadaAdv.appendChild(imgCartaJogada)
+    AllCards[sortearCarta].childNodes[0].src = srcsCartas[5]
+    jogadaAdv.childNodes[0].id = AllCards[sortearCarta].id
+    AllCards[sortearCarta].id = "cartavirada"
+    adv = false
+    jog = true
+    deslizarPainel()
+    addeventosinJog()
+}
+
+// adiciona o evento de click para o jogador escolher uma carta
+function addeventosinJog(){
+    for (var c = 0; c <= 19; c++){
+        var verificarSrcById = (AllCards[c].getAttribute("id"))
+        if (!verificarSrcById.match("carta")){
+            AllCards[c].addEventListener('click', jogadadoJogador)
+        }
+    }
+}
+// verifica a carta escolhida pelo jogador
+function jogadadoJogador(){
+    jogadaJog = document.querySelector("#cartaJog")
+    for (var c = 0; c<= 19; c++){
+        if (AllCards[c].id.match("doble") || AllCards[c].id.match("pimenta") || AllCards[c].id.match("triple")){
+            AllCards[c].removeEventListener("click", jogadadoJogador)
+        }
+    }
+    if (this.id.match("doble")){
+        this.childNodes[0].src = srcsCartas[5]
+        this.id = "cartavirada"
+        multiplicador = 2
+        Textinf.innerHTML = "Escolha uma carta para X2"
+    }else if (this.id.match("triple")){
+        this.childNodes[0].src = srcsCartas[5]
+        this.id = "cartavirada" 
+        multiplicador = 3
+        Textinf.innerHTML = "Escolha uma carta para X3"
+    }else{
+        if (this.id.match("pimenta")){
+            pimenta = true
+        }
+        for (var c = 0; c<= 19; c++){
+            AllCards[c].removeEventListener("click", jogadadoJogador)
+        }
+        var CartaJog = document.createElement("img")
+        var att1 = document.createAttribute("src")
+        att1.value = this.childNodes[0].getAttribute("src")
+        CartaJog.setAttributeNode(att1)
+        jogadaJog.appendChild(CartaJog)
+        this.childNodes[0].src = srcsCartas[5]
+        jogadaJog.childNodes[0].id = this.id
+        this.id = "cartavirada"
+        deslizecentro = true
+        deslizarPainel()
+        intervaloCalculo = setInterval(calcular, 2000)
+        Textinf.innerHTML = "Calculando vencedor"  
+    }
+}
+// Verifica quem foi o vencedor da rodada
+function calcular (){
+    clearInterval(intervaloCalculo)
+    var jogadaJog = document.querySelector("#cartaJog").childNodes[0]
+    var jogadaAdv = document.querySelector("#cartaAdv").childNodes[0]
+    for (var c = 1; c <= 5; c++){
+        if (jogadaJog.id.match(c)){
+            numerodoJogador = c*multiplicador
+        }
+        if(jogadaAdv.id.match(c)){
+            numerodoAdv = c
+        }
+    }
+    if (numerodoAdv > (numerodoJogador) && (!pimenta)){
+        Textinf.innerHTML= "Roxo Ganhou!"
+    }else if ((numerodoJogador > numerodoAdv) && (!pimenta)){
+        Textinf.innerHTML = "Vermelho venceu!"  
+    }else if ((numerodoAdv == numerodoJogador) && (!pimenta)){
+        Textinf.innerHTML = "Houve um Empate!"
+    }else if (pimenta){
+        Textinf.innerHTML = "Toma essa Roxo!"
+        document.querySelector("#jogplaceimg").src = "https://teu2tw.dm.files.1drv.com/y4mwvY5R3cDgrEk6cAvJrgRT7uAvOOyF4iG4FpOKAUkmTwHvW16EPTMXiA_u_Sv52YNK6WqR1sk4zcURZSM-qu1W69oQa1grFlG9sPro-i7XRhdEqS9UmDN6lkrKmhPH4XLTtC94JHPE_a8qvLql9IvZgWXTj0D0DP5AFAXi5KOaZWQ7CWR8LS18yhHBoq914ycHbkG_i3pZEw3f0ypbteJJg?width=42&height=85&cropmode=none"
+    }
+    intervaloCalculo = setInterval(MostrarPontos, 1000) 
+}
+// Mostra os pontos nas divs circulares brancas
+function MostrarPontos(){
+    clearInterval(intervaloCalculo)
+    var Pontos = document.getElementsByClassName("pontos")
+    if ((numerodoAdv > numerodoJogador) && (!pimenta)){
+        //Pontos apartir da posição 10
+        substrair = numerodoAdv - numerodoJogador
+        for (var c = 1; c <= substrair; c++){
+           /* em ordem 26, 22, 18, 14, 10 coluna 1
+                       27, 23, 19, 15, 11 coluna 2
+                           24, 20, 16, 12 coluna 3
+                           25, 21, 17, 13 coluna 4
+                      para efeitos visuais, posiçoes das divs no vetor que pega elas via class */
+            Pontos[MarcarAdvPontos].style.backgroundColor = "white"
+            if (MarcarAdvPontos == 10){
+                MarcarAdvPontos = 27 + 4
+            }else if (MarcarAdvPontos == 11){
+                MarcarAdvPontos = 24 + 4
+            }else if (MarcarAdvPontos == 12){
+                MarcarAdvPontos = 25 + 4
+            }else if (MarcarAdvPontos == 13){
+                break
+            }
+            MarcarAdvPontos -= 4
+        }
+    }else if ((numerodoJogador > numerodoAdv) && (!pimenta)){
+        substrair = numerodoJogador - numerodoAdv
+        for (c = 1; c <= substrair; c++){
+            // em ordem 8, 6, 4, 2, 0
+                     // 9, 7, 5, 3, 1
+            Pontos[MarcarJogPontos].style.backgroundColor = "white"
+            MarcarJogPontos -= 2
+            if (MarcarJogPontos == (-2)){
+                MarcarJogPontos = 9
+            }else if (MarcarJogPontos == -1){
+                break
+            }
+        }
+    }else if (pimenta){
+        for (c = 10; c < 28; c++){
+            Pontos[c].style.backgroundColor = "black"
+            MarcarAdvPontos = 25
+        }
+    }
+    delay = setInterval(removerCartasJogadas,800)
+    intervalo = setInterval(ProximaJogada, 1500)
+}
+// remove as cartas jogadas
+function removerCartasJogadas(){
+    document.querySelector("#jogplaceimg").src = srcPlayer[1]
+    Textinf.innerHTML = ""
+    clearInterval(delay)
+    jogadaAdv.childNodes[0].remove()
+    jogadaJog.childNodes[0].remove()
+    multiplicador = 1
+    pimenta = false
+}
+// volta a jogada para o adversario e retoma todo loop, caso nao haja nehum vencedor
+function ProximaJogada(){
+    VerificarVenc()
+    clearInterval(intervalo)
+    if (jogo){
+      ComeçarJogo()  
+    }
+    
+}
+
+function VerificarVenc(){
+    var Pontos = document.getElementsByClassName("pontos")
+    var pontosAdv = 0; // max 18 (vetor de classe do 10 ao 27)
+    var pontosJogador = 0 // max 10
+    for (var c = 10; c <= 27; c++){
+        if (Pontos[c].style.backgroundColor.match("white")){
+            pontosAdv++
+        }
+    }
+    for (c = 0; c <= 9; c++){
+        if (Pontos[c].style.backgroundColor.match("white")){
+            pontosJogador++
+        }
+    }
+    var cartasAdvViradas = 0 // max 16
+    var cartasJogViradas = 0 // max 20
+    for (c = 20; c < AllCards.length; c++){
+        if (AllCards[c].id.match("cartavirada")){
+            cartasAdvViradas ++
+        }
+    }
+    for (c = 0; c <= 19; c++){
+        if (AllCards[c].id.match("cartavirada")){
+            cartasJogViradas ++
+        }
+    }
+    if ((pontosJogador == 10) ||(cartasJogViradas == 20 && pontosAdv < pontosJogador) || (cartasAdvViradas == 16 && pontosJogador > pontosAdv)){
+        Textinf.innerHTML = "Parabéns Vermelho, você venceu!"
+        document.querySelector("#jogplaceimg").src = "https://teu2tw.dm.files.1drv.com/y4mwvY5R3cDgrEk6cAvJrgRT7uAvOOyF4iG4FpOKAUkmTwHvW16EPTMXiA_u_Sv52YNK6WqR1sk4zcURZSM-qu1W69oQa1grFlG9sPro-i7XRhdEqS9UmDN6lkrKmhPH4XLTtC94JHPE_a8qvLql9IvZgWXTj0D0DP5AFAXi5KOaZWQ7CWR8LS18yhHBoq914ycHbkG_i3pZEw3f0ypbteJJg?width=42&height=85&cropmode=none"
+        Reiniciar()
+        jogo = false
+    }else if ((pontosAdv == 18) || (cartasAdvViradas == 16 && pontosJogador < pontosAdv) || (cartasJogViradas == 20 && pontosAdv > pontosJogador)){
+        Textinf.innerHTML = "Parabéns Roxo, você venceu!"
+        Reiniciar()
+        jogo = false
+    }else if ((pontosJogador == pontosAdv && cartasJogViradas == 20) || (pontosJogador == pontosAdv && cartasAdvViradas == 16)){
+        Textinf.innerHTML = "Partida empatou! Diputem novamente!"
+        Reiniciar()
+        jogo = false
+    }
+}
+
+function Reiniciar(){
+    var btn = document.querySelector("#btnStart")
+    //btn.style.transform = "scale(1.05)"
+    btn.src = "https://wouztw.dm.files.1drv.com/y4mKaFIyO8SiBvs_zfUAq8VDbnQjNh8pXF5g3Lmb6HYVGhoFlt9MldfwolH2MsIEA__BJuGEabVW7XnJGXK8-AU4Q_tOrfjyRBSZWGZ2_nHnp_QYwkKd4b9akPSTBDhMQRcseMnx0cJFXQvk-ZlMIJPfnBJx8nFd9zJjIXFtMCNncDZ_FBQvQq_pgovX8OBQlJ3atFRyjaklstwa2hG_heTMw?width=100&height=46&cropmode=none"
+    for (c = 0; c < AllCards.length; c++){
+        AllCards[c].childNodes[0].remove()
+    }
+    estilizar()
+}
+
+
+
+</script>
+</html>
